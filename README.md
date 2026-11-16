@@ -6,7 +6,7 @@ pull request links them.
 
 ## Layout
 
-Each upload gets a new folder named after the branch (`/` becomes `-`), its commit
+Each upload gets a new folder named after the branch (`/` becomes `-`), its commit,
 the UTC time and the uploading shell's process ID, so no two uploads share one and
 nothing is overwritten:
 
