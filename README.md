@@ -6,17 +6,20 @@ pull request links them.
 
 ## Layout
 
-One folder per change, named after its branch (`/` becomes `-`):
+Each upload gets a new folder named after the branch (`/` becomes `-`) and its
+commit, so two branches never share one and nothing is overwritten:
 
 ```
-<branch>/before-<what>.png
-<branch>/after-<what>.png
+<branch>-<commit>/before-<what>.png
+<branch>-<commit>/after-<what>.png
 ```
+
+Copy each file by name, not with a glob, so no stale capture is published.
 
 Embed one in a pull request with its raw URL:
 
 ```markdown
-![After, 1072×800](https://raw.githubusercontent.com/ArakunHQ/pr-assets/main/<branch>/after-1072x800.png)
+![After, 1072×800](https://raw.githubusercontent.com/ArakunHQ/pr-assets/main/<folder>/after-1072x800.png)
 ```
 
 Screenshots are public: use made-up data, not real accounts or tokens.
