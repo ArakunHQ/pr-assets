@@ -4,24 +4,18 @@ Screenshots and recordings for pull requests in [ArakunHQ/arakun](https://github
 GitHub has no API to attach images to a pull request, so they live here and the
 pull request links them.
 
-## Layout
+## Uploading
 
-Each upload gets a new folder named after the branch (any character but letters,
-digits, `.`, `_` and `-` becomes `-`, so it is safe in a URL), its commit, the
-UTC time and the uploading shell's process ID, so no two uploads share one and
-nothing is overwritten:
+From an Arakun checkout, name each image:
 
-```
-<branch>-<commit>-<YYYYmmddHHMMSS>-<pid>/before-<what>.png
-<branch>-<commit>-<YYYYmmddHHMMSS>-<pid>/after-<what>.png
+```sh
+tools/pr-assets.sh "$TMPDIR/before.png" "$TMPDIR/after.png"
 ```
 
-Copy each file by name, not with a glob, so no stale capture is published.
+It puts them in a new folder, pushes, and prints the Markdown to paste into the
+pull request. The script's header says how folders are named. Folders made before
+the script existed (`cloudflare-overview-narrow`, `pr-macos-dynamic-icon`,
+`pr-server-app`) keep their names, since pull requests link to them.
 
-Embed one in a pull request with its raw URL:
-
-```markdown
-![After, 1072×800](https://raw.githubusercontent.com/ArakunHQ/pr-assets/main/<folder>/after-1072x800.png)
-```
-
-Screenshots are public: use made-up data, not real accounts or tokens.
+Screenshots are public: use made-up data, not real accounts, tokens, emails or
+home-directory paths.
