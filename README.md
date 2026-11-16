@@ -6,12 +6,12 @@ pull request links them.
 
 ## Layout
 
-Each upload gets a new folder named after the branch (`/` becomes `-`) and its
-commit, so two branches never share one and nothing is overwritten:
+Each upload gets a new folder named after the branch (`/` becomes `-`), its commit
+and the UTC time, so no two uploads share one and nothing is overwritten:
 
 ```
-<branch>-<commit>/before-<what>.png
-<branch>-<commit>/after-<what>.png
+<branch>-<commit>-<YYYYmmddHHMMSS>/before-<what>.png
+<branch>-<commit>-<YYYYmmddHHMMSS>/after-<what>.png
 ```
 
 Copy each file by name, not with a glob, so no stale capture is published.
