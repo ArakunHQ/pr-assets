@@ -6,9 +6,9 @@ pull request links them.
 
 ## Layout
 
-Each upload gets a new folder named after the branch (any character but letters, digits, `.`, `_` and `-`
-becomes `-`, so it is safe in a URL), its commit,
-the UTC time and the uploading shell's process ID, so no two uploads share one and
+Each upload gets a new folder named after the branch (any character but letters,
+digits, `.`, `_` and `-` becomes `-`, so it is safe in a URL), its commit, the
+UTC time and the uploading shell's process ID, so no two uploads share one and
 nothing is overwritten:
 
 ```
