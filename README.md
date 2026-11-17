@@ -1,12 +1,13 @@
 # pr-assets
 
-Screenshots and recordings for pull requests in [ArakunHQ/arakun](https://github.com/ArakunHQ/arakun).
+Screenshots and recordings for pull requests in [ArakunHQ/arakun](https://github.com/ArakunHQ/arakun)
+and [ArakunHQ/arakun.dev](https://github.com/ArakunHQ/arakun.dev).
 GitHub has no API to attach images to a pull request, so they live here and the
 pull request links them.
 
 ## Uploading
 
-From an Arakun checkout, name each image:
+From a checkout of either repository, name each image:
 
 ```sh
 tools/pr-assets.sh "$TMPDIR/before.png" "$TMPDIR/after.png"
