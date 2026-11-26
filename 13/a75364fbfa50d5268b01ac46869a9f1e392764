@@ -1,0 +1,23 @@
+tools/cleanup.sh
+  s_1f92a9567c8a64::t_8172bc06e89261 1-74
+.github/workflows/cleanup.yml
+  s_1f92a9567c8a64::t_51163013190ce9 1-58
+README.md
+  s_1f92a9567c8a64::t_a4fa336b62a324 21-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "13a75364fbfa50d5268b01ac46869a9f1e392764",
+  "prompts": {},
+  "sessions": {
+    "s_1f92a9567c8a64": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1fdf3fbb-0335-401a-98a2-6a75083c356d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Rik Visser <rik@rivi.software>"
+    }
+  }
+}
