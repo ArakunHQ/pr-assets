@@ -18,5 +18,15 @@ pull request. The script's header says how folders are named. Folders made befor
 the script existed (`cloudflare-overview-narrow`, `pr-macos-dynamic-icon`,
 `pr-server-app`) keep their names, since pull requests link to them.
 
+## Cleanup
+
+Every Monday, the `Clean up old assets` workflow deletes upload folders older
+than 90 days, unless an open pull request in either repository still links
+them. After that, merged and closed pull requests show broken images. The
+three older folders above are never deleted. To see what would go, run
+`tools/cleanup.sh` (a dry run), or start the workflow by hand with `dry_run`
+checked. Deleted files stay in git history, so the repository's clone size
+does not shrink.
+
 Screenshots are public: use made-up data, not real accounts, tokens, emails or
 home-directory paths.
