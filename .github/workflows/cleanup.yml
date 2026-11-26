@@ -1,0 +1,58 @@
+name: Clean up old assets
+
+# Weekly, deletes upload folders older than 90 days that no open pull request
+# in ArakunHQ/arakun or ArakunHQ/arakun.dev links. See tools/cleanup.sh.
+on:
+  schedule:
+    - cron: "17 4 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only list what would be deleted"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find old folders
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KEEP_DAYS: "90"
+        run: |
+          if [ "${{ github.event_name }}" = workflow_dispatch ] &&
+            [ "${{ inputs.dry_run }}" = true ]; then
+            tools/cleanup.sh
+          else
+            tools/cleanup.sh --apply
+          fi
+
+      - name: Commit and push
+        run: |
+          if git diff --cached --quiet; then
+            echo "Nothing to delete."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "chore: delete assets older than 90 days"
+          # Uploads push to main too; take theirs and try again.
+          for _ in 1 2 3 4 5; do
+            if git push -q origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((RANDOM % 5 + 1))
+            git pull -q --rebase origin main
+          done
+          echo "Could not push the cleanup commit." >&2
+          exit 1
